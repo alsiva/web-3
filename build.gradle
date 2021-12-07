@@ -27,6 +27,9 @@ dependencies {
     compileOnly('javax.faces:javax.faces-api:2.3')
     compileOnly('javax.servlet:javax.servlet-api:4.0.1')
 
+    implementation 'org.icefaces:icefaces:4.3.0'
+    implementation 'org.primefaces:primefaces:11.0.0-RC2'
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
