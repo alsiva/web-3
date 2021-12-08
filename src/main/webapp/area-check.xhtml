@@ -4,6 +4,7 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
 >
 
 <f:view>
@@ -27,15 +28,11 @@
                 <h:message for="y" />
             </h:outputLabel>
 
-            <h:outputLabel value="1.0">
-                <h:selectBooleanCheckbox value="false" id="r10" />
-            </h:outputLabel>
-            <h:outputLabel value="1.5">
-                <h:selectBooleanCheckbox value="false" id="r15" />
-            </h:outputLabel>
-            <h:outputLabel value="2.0">
-                <h:selectBooleanCheckbox value="false" id="r20" />
-            </h:outputLabel>
+            <p:repeat value="#{hitAttempt.checkBoxes}" var="checkbox">
+                <h:outputLabel value="${checkbox.value}">
+                    <h:selectBooleanCheckbox value="${checkbox.selected}" />
+                </h:outputLabel>
+            </p:repeat>
 
             <h:commandButton value="submit" action="#{hitHistory.submit}" />
         </h:form>
