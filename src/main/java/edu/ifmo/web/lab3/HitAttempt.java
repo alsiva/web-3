@@ -12,7 +12,7 @@ import static java.util.stream.Collectors.toList;
 @Named
 @RequestScoped
 public class HitAttempt implements Serializable {
-    private double x = 0;
+    private int x = 0;
     private double y = 0;
 
     private final List<RadiusCheckBox> checkBoxes = DoubleStream.of(1.0, 1.5, 2.0, 2.5, 3.0)
@@ -23,11 +23,11 @@ public class HitAttempt implements Serializable {
         return checkBoxes;
     }
 
-    public double getX() {
+    public int getX() {
         return x;
     }
 
-    public void setX(double x) {
+    public void setX(int x) {
         this.x = x;
     }
 

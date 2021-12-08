@@ -7,36 +7,39 @@
     xmlns:p="http://primefaces.org/ui"
 >
 
-<f:view>
-    <h:head>
-        <title>Area check</title>
-    </h:head>
+<h:head>
+    <title>Area check</title>
+</h:head>
 
-    <h:body>
-        <h:form id="coordinatesForm" class="coordinates">
-            <h:outputLabel value="y">
-                <h:inputText
-                    id="y"
-                    value="#{hitAttempt.y}"
-                    validatorMessage="y should be from -5 to 3"
-                    required="true"
-                    requiredMessage="y is required"
-                    converterMessage="y must be a number"
-                >
-                    <f:validateLongRange minimum="-5" maximum="3" />
-                </h:inputText>
-                <h:message for="y" />
+<h:body>
+    <h:form id="coordinatesForm" class="coordinates">
+        <h:outputLabel value="x: ">
+            <h:panelGrid columns="1" style="margin-bottom: 10px">
+                <p:inputText id="xInput" value="#{hitAttempt.x}" disabled="true"/>
+                <p:slider for="xInput" range="false" minValue="-5" maxValue="5"/>
+            </h:panelGrid>
+        </h:outputLabel>
+        <h:outputLabel value="y: ">
+            <h:inputText
+                id="y"
+                value="#{hitAttempt.y}"
+                validatorMessage="y should be from -5 to 3"
+                required="true"
+                requiredMessage="y is required"
+                converterMessage="y must be a number"
+            >
+                <f:validateLongRange minimum="-5" maximum="3" />
+            </h:inputText>
+            <h:message for="y" />
+        </h:outputLabel>
+
+        <p:repeat value="#{hitAttempt.checkBoxes}" var="checkbox">
+            <h:outputLabel value="${checkbox.value}">
+                <h:selectBooleanCheckbox value="${checkbox.selected}" />
             </h:outputLabel>
+        </p:repeat>
 
-            <p:repeat value="#{hitAttempt.checkBoxes}" var="checkbox">
-                <h:outputLabel value="${checkbox.value}">
-                    <h:selectBooleanCheckbox value="${checkbox.selected}" />
-                </h:outputLabel>
-            </p:repeat>
-
-            <h:commandButton value="submit" action="#{hitHistory.submit}" />
-        </h:form>
-    </h:body>
-
-</f:view>
+        <h:commandButton value="submit" action="#{hitHistory.submit}" />
+    </h:form>
+</h:body>
 </html>
