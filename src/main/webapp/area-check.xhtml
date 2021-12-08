@@ -34,12 +34,31 @@
         </h:outputLabel>
 
         <p:repeat value="#{hitAttempt.checkBoxes}" var="checkbox">
-            <h:outputLabel value="${checkbox.value}">
+            <h:outputLabel value="${checkbox.radius}">
                 <h:selectBooleanCheckbox value="${checkbox.selected}" />
             </h:outputLabel>
         </p:repeat>
 
         <h:commandButton value="submit" action="#{hitHistory.submit}" />
     </h:form>
+
+    <h:dataTable value="${hitHistory.hitResultList}" var="hitResult">
+        <h:column>
+            <f:facet name="header">X</f:facet>
+            <h:outputText value="#{hitResult.x}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Y</f:facet>
+            <h:outputText value="#{hitResult.y}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">R</f:facet>
+            <h:outputText value="#{hitResult.r}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">doesHit</f:facet>
+            <h:outputText value="#{hitResult.doesHit}"/>
+        </h:column>
+    </h:dataTable>
 </h:body>
 </html>

@@ -3,32 +3,39 @@ package edu.ifmo.web.lab3;
 import java.io.Serializable;
 
 public class HitResult implements Serializable {
-    private float x = 0;
-    private float y = 0;
-    private float r = 1;
+    private int x;
+    private double y;
+    private double r;
     private boolean doesHit;
 
-    public float getX() {
+    public HitResult(int x, double y, double r, boolean doesHit) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.doesHit = doesHit;
+    }
+
+    public int getX() {
         return x;
     }
 
-    public void setX(float x) {
+    public void setX(int x) {
         this.x = x;
     }
 
-    public float getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(float y) {
+    public void setY(double y) {
         this.y = y;
     }
 
-    public float getR() {
+    public double getR() {
         return r;
     }
 
-    public void setR(float r) {
+    public void setR(double r) {
         this.r = r;
     }
 

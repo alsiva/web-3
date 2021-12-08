@@ -42,16 +42,16 @@ public class HitAttempt implements Serializable {
     public List<Double> getSelectedRadiusList() {
         return checkBoxes.stream()
             .filter(RadiusCheckBox::isSelected)
-            .map(RadiusCheckBox::getValue)
+            .map(RadiusCheckBox::getRadius)
             .collect(Collectors.toList());
     }
 
     public static class RadiusCheckBox implements Serializable {
         private boolean isSelected = false;
-        private final double value;
+        private final double radius;
 
-        public RadiusCheckBox(double value) {
-            this.value = value;
+        public RadiusCheckBox(double radius) {
+            this.radius = radius;
         }
 
         public boolean isSelected() {
@@ -62,8 +62,8 @@ public class HitAttempt implements Serializable {
             isSelected = selected;
         }
 
-        public double getValue() {
-            return value;
+        public double getRadius() {
+            return radius;
         }
     }
 }
