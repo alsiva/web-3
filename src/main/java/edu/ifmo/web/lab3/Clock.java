@@ -1,14 +1,14 @@
 package edu.ifmo.web.lab3;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@ManagedBean(name = "clock")
+@Named
 @ViewScoped
-public class Clock {
+public class Clock implements Serializable {
     private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d MMMM yyyy, HH:mm:ss");
 
     public String getTime() {

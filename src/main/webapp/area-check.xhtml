@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+>
+
+<f:view>
+    <h:head>
+        <title>Area check</title>
+    </h:head>
+
+    <h:body>
+        <h:form id="coordinatesForm" class="coordinates">
+            <h:outputLabel value="y">
+                <h:inputText value="#{hitAttempt.y}" validatorMessage="value out of bounds">
+                    <f:validateLongRange minimum="-5" maximum="3" />
+                </h:inputText>
+            </h:outputLabel>
+
+            <h:outputLabel value="1.0">
+                <h:selectBooleanCheckbox value="false" id="r10"/>
+            </h:outputLabel>
+            <h:outputLabel value="1.5">
+                <h:selectBooleanCheckbox value="false" id="r15"/>
+            </h:outputLabel>
+            <h:outputLabel value="2.0">
+                <h:selectBooleanCheckbox value="false" id="r20"/>
+            </h:outputLabel>
+
+            <h:commandButton value="submit" action="#{hitHistory.submit}" />
+        </h:form>
+    </h:body>
+
+</f:view>
+</html>
