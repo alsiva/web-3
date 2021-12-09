@@ -11,7 +11,7 @@ import static java.util.stream.Collectors.toList;
 
 @Named
 @RequestScoped
-public class HitAttempt implements Serializable {
+public class FormHit implements Serializable {
     private int x = 0;
     private double y = 0;
 
