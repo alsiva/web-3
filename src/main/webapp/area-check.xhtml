@@ -15,6 +15,10 @@
 
 <h:body>
     <canvas id="area" />
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{hitHistory.addStoredHitsToCanvas}"/>
+    </f:metadata>
+
     <h:outputScript name="canvas.js"/>
 
     <h:form styleClass="hidden" id="chart-form">

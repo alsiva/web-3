@@ -41,11 +41,18 @@ public class HitHistory implements Serializable {
         addHits(Collections.singletonList(hitResult));
     }
 
+    private void addHits(List<HitResult> hits) {
+        hitResultList.addAll(hits);
 
-    private void addHits(List<HitResult> submittedHits) {
-        hitResultList.addAll(submittedHits);
+        addHitsToCanvas(hits);
+    }
 
-        String json = submittedHits.stream()
+    public void addStoredHitsToCanvas() {
+        addHitsToCanvas(hitResultList);
+    }
+
+    private void addHitsToCanvas(List<HitResult> hits) {
+        String json = hits.stream()
             .map(hit -> "{" +
                 " x: " + hit.getX() + "," +
                 " y: " + hit.getY() + "," +
