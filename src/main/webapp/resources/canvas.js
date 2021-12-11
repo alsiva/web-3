@@ -160,3 +160,11 @@ canvas.addEventListener('click', function(event) {
     document.getElementById("chart-form:chart-r").value = r.toString();
     document.getElementById("chart-form:submit").click();
 })
+
+function addHits(hits) {
+    for (let hit of hits) {
+        let ratio = radius / hit.r;
+
+        drawHit(hit.x * ratio, hit.y * ratio, hit.doesHit)
+    }
+}

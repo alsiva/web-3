@@ -54,7 +54,7 @@
             </h:outputLabel>
         </p:repeat>
 
-        <p:commandButton value="submit" action="#{hitHistory.addFromForm}" update="hits"/>
+        <p:commandButton value="submit" action="#{hitHistory.addFromForm}" update="hits" />
     </h:form>
 
     <h:dataTable id="hits" value="${hitHistory.hitResultList}" var="hitResult">

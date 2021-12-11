@@ -1,10 +1,15 @@
 package edu.ifmo.web.lab3;
 
+import org.primefaces.PrimeFaces;
+import org.primefaces.shaded.json.JSONObject;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,12 +32,29 @@ public class HitHistory implements Serializable {
             .map(radius -> new HitResult(x, y, radius, true))
             .collect(Collectors.toList());
 
-        hitResultList.addAll(submittedHits);
+        addHits(submittedHits);
     }
 
     @Inject ChartHit chartHit;
     public void addFromChart() {
         HitResult hitResult = new HitResult(chartHit.getX(), chartHit.getY(), chartHit.getR(), true);
-        hitResultList.add(hitResult);
+        addHits(Collections.singletonList(hitResult));
+    }
+
+
+    private void addHits(List<HitResult> submittedHits) {
+        hitResultList.addAll(submittedHits);
+
+        String json = submittedHits.stream()
+            .map(hit -> "{" +
+                " x: " + hit.getX() + "," +
+                " y: " + hit.getY() + "," +
+                " r: " + hit.getR() + "," +
+                " doesHit: " + hit.isDoesHit() + " }"
+            )
+            .collect(Collectors.joining(", ", "[", "]"));
+
+
+        PrimeFaces.current().executeScript("addHits(" + json + ")");
     }
 }
