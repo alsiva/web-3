@@ -29,15 +29,23 @@ public class HitHistory implements Serializable {
 
         List<HitResult> submittedHits = formhit.getSelectedRadiusList()
             .stream()
-            .map(radius -> new HitResult(x, y, radius, true))
+            .map(radius -> calculateHit(x, y, radius))
             .collect(Collectors.toList());
 
         addHits(submittedHits);
     }
 
+    private HitResult calculateHit(double x, double y, double radius) {
+        return new HitResult(x, y, radius, doesItHit(x, y, radius));
+    }
+
+    private boolean doesItHit(double x, double y, double radius) {
+        return true;
+    }
+
     @Inject ChartHit chartHit;
     public void addFromChart() {
-        HitResult hitResult = new HitResult(chartHit.getX(), chartHit.getY(), chartHit.getR(), true);
+        HitResult hitResult = calculateHit(chartHit.getX(), chartHit.getY(), chartHit.getR());
         addHits(Collections.singletonList(hitResult));
     }
 
