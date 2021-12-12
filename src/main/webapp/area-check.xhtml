@@ -10,6 +10,7 @@
 
 <h:head>
     <title>Area check</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
     <h:outputStylesheet name="area-check.css" />
 </h:head>
 
@@ -29,12 +30,12 @@
     </h:form>
 
     <h:form id="coordinatesForm" class="coordinates">
-        <h:outputLabel value="x: ">
-            <h:panelGrid columns="1" style="margin-bottom: 10px">
+        <h:panelGrid columns="1">
+            <h:outputLabel value="x: ">
                 <p:inputText id="xInput" value="#{formHit.x}" disabled="true"/>
-                <p:slider for="xInput" range="false" minValue="-5" maxValue="5"/>
-            </h:panelGrid>
-        </h:outputLabel>
+            </h:outputLabel>
+            <p:slider for="xInput" range="false" minValue="-5" maxValue="5"/>
+        </h:panelGrid>
         <h:outputLabel value="y: ">
             <h:inputText
                 id="y"
@@ -49,14 +50,17 @@
             <h:message for="y" />
         </h:outputLabel>
 
-        <p:repeat value="#{formHit.checkBoxes}" var="checkbox">
-            <h:outputLabel value="${checkbox.radius}">
-                <h:selectBooleanCheckbox
-                    a:data-radius="${checkbox.radius}"
-                    value="${checkbox.selected}"
-                />
-            </h:outputLabel>
-        </p:repeat>
+        <div class="options">
+            <span>r: </span>
+            <p:repeat value="#{formHit.checkBoxes}" var="checkbox">
+                <h:outputLabel value="${checkbox.radius}">
+                    <h:selectBooleanCheckbox
+                        a:data-radius="${checkbox.radius}"
+                        value="${checkbox.selected}"
+                    />
+                </h:outputLabel>
+            </p:repeat>
+        </div>
 
         <p:commandButton value="submit" action="#{hitHistory.addFromForm}" update="hits" />
     </h:form>
@@ -75,7 +79,7 @@
             <h:outputText value="#{hitResult.r}"/>
         </h:column>
         <h:column>
-            <f:facet name="header">doesHit</f:facet>
+            <f:facet name="header">does hit</f:facet>
             <h:outputText value="#{hitResult.doesHit}"/>
         </h:column>
     </h:dataTable>
