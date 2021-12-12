@@ -1,14 +1,12 @@
 package edu.ifmo.web.lab3;
 
 import org.primefaces.PrimeFaces;
-import org.primefaces.shaded.json.JSONObject;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +14,13 @@ import java.util.stream.Collectors;
 @Named
 @ApplicationScoped
 public class HitHistory implements Serializable {
-    private final List<HitResult> hitResultList = new ArrayList<>();
+    @Inject DbManager dbManager;
+    private List<HitResult> hitResultList;
+
+    @PostConstruct
+    public void setDbManager() {
+        hitResultList = dbManager.getHits();
+    }
 
     public List<HitResult> getHitResultList() {
         return hitResultList;
@@ -50,9 +54,10 @@ public class HitHistory implements Serializable {
     }
 
     private void addHits(List<HitResult> hits) {
-        hitResultList.addAll(hits);
-
-        addHitsToCanvas(hits);
+        if (dbManager.addHits(hits)) {
+            hitResultList.addAll(hits);
+            addHitsToCanvas(hits);
+        }
     }
 
     public void addStoredHitsToCanvas() {

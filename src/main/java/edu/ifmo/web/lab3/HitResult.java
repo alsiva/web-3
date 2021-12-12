@@ -1,8 +1,17 @@
 package edu.ifmo.web.lab3;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
+@Entity
 public class HitResult implements Serializable {
+    @Id
+    @GeneratedValue
+    private Long Id;
+
     private double x;
     private double y;
     private double r;
@@ -13,6 +22,9 @@ public class HitResult implements Serializable {
         this.y = y;
         this.r = r;
         this.doesHit = doesHit;
+    }
+
+    public HitResult() {
     }
 
     public double getX() {
@@ -45,5 +57,13 @@ public class HitResult implements Serializable {
 
     public void setDoesHit(boolean doesHit) {
         this.doesHit = doesHit;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
     }
 }
