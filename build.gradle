@@ -31,9 +31,6 @@ dependencies {
     implementation 'org.primefaces:primefaces:11.0.0-RC2'
     //noinspection GradlePackageUpdate
     implementation 'org.eclipse.persistence:eclipselink:2.7.9'
-
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
 test {
