@@ -1,6 +1,6 @@
 package edu.ifmo.web.lab3;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.stream.DoubleStream;
 import static java.util.stream.Collectors.toList;
 
 @Named
-@RequestScoped
+@ViewScoped
 public class FormHit implements Serializable {
     private int x = 0;
     private double y = 0;

@@ -27,3 +27,19 @@
     min-width: 60px;
     text-align: left;
 }
+
+.errorMsg {
+    display: inline-block;
+    margin-left: 16px;
+    color: #901010;
+}
+.x-slider {
+    width: 138px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.xOutput {
+    display: inline-block;
+    width: 32px;
+}
