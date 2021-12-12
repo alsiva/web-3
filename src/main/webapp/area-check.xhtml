@@ -65,6 +65,10 @@
         <p:commandButton value="submit" action="#{hitHistory.addFromForm}" update="hits" />
     </h:form>
 
+    <footer>
+        <h:link value="Go to start page" outcome="go-start" />
+    </footer>
+
     <h:dataTable id="hits" value="${hitHistory.hitResultList}" var="hitResult">
         <h:column>
             <f:facet name="header">X</f:facet>
