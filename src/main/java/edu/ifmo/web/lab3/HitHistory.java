@@ -18,7 +18,7 @@ public class HitHistory implements Serializable {
     private List<HitResult> hitResultList;
 
     @PostConstruct
-    public void setDbManager() {
+    public void initializeHits() {
         hitResultList = dbManager.getHits();
     }
 
@@ -44,7 +44,15 @@ public class HitHistory implements Serializable {
     }
 
     private boolean doesItHit(double x, double y, double radius) {
-        return true;
+        if (-radius <= x && x <= 0 && 0 <= y && y <= (x + radius) / 2) {
+            return true;
+        }
+
+        if (Math.pow(x, 2) + Math.pow(y, 2) <= Math.pow(radius, 2) && x >= 0 && y >= 0) {
+            return true;
+        }
+
+        return 0 <= x && x <= radius && -radius / 2 <= y && y <= 0;
     }
 
     @Inject ChartHit chartHit;
