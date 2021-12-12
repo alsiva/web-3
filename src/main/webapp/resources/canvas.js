@@ -62,19 +62,19 @@ function drawArea(radius) {
     ctx.fillStyle = '#09b0e8';
 
     //rectangle
-    ctx.fillRect(0, 0, radius / 2, radius)
+    ctx.fillRect(0, 0, radius, -radius / 2)
 
     //triangle
     ctx.beginPath()
     ctx.moveTo(0, 0)
-    ctx.lineTo(0, -radius / 2)
-    ctx.lineTo(radius / 2, 0)
+    ctx.lineTo(-radius, 0)
+    ctx.lineTo(0, radius / 2)
     ctx.fill();
 
     // circle
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.arc(0, 0, radius, Math.PI, Math.PI * 3 / 2)
+    ctx.arc(0, 0, radius, 0, Math.PI / 2)
     ctx.fill();
 }
 
