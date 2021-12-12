@@ -24,19 +24,18 @@ public class DbManager implements Serializable {
             transaction.commit();
             return true;
         } catch (Exception e) {
-            transaction.rollback();
             System.err.println("failed to add hits to database: " + e.getMessage());
+            transaction.rollback();
             return false;
         }
     }
 
     synchronized public List<HitResult> getHits() {
         try {
-            entityManager.getTransaction().begin();
-            TypedQuery<HitResult> query = entityManager.createQuery("SELECT h FROM HitResult h", HitResult.class);
-            return query.getResultList();
+            return entityManager
+                .createQuery("SELECT h FROM HitResult h", HitResult.class)
+                .getResultList();
         } catch (Exception e) {
-            entityManager.getTransaction().rollback();
             System.err.println("failed to get hits from database: " + e.getMessage());
 
             return Collections.emptyList();
